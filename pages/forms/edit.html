@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+
+<head>
+  <meta charset="UTF-8">
+  <title>IAs Login</title>
+  <link rel="icon" type="image/x-icon" href="../../assets/media/icons/logo_g19.png">
+  <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1">
+  <meta name="keywords" content="">
+  <meta name="description" content="Front-End del trabajo práctico del curso Full-Stack Python 2023 2C - Codo a Codo">
+  <meta name="author" content="Valentín, Matías, Julián, Mario">
+
+  <link rel="stylesheet" href="../../assets/css/styles.css" />
+  <link rel="stylesheet" href="../../assets/css/ia.css" />
+</head>
+
+<body>
+  <header id="headerPri">
+    <a id="logoSitio" href="https://net-m.myddns.me">
+      <img src="../../assets/media/icons/logo_g19.png" width="55" height="55" alt="Logo del Portfolio - Grupo-19"
+        title="Grupo-19" />
+    </a>
+    <h1>IAs list</h1>
+    <nav id="menuPri">
+      <ul>
+        <li><a href="../../index.html">inicio</a></li>
+        <li><a href="../byFunction.html">Funcion</a></li>
+        <li><a href="../comments.html">Comentarios</a></li>
+        <li><a href="./fLogin.html"><i class="bi bi-person-circle"></i></a></li>
+      </ul>
+    </nav>
+    <button id="btnMenuPri" type="button"></button>
+  </header>
+
+  <main>
+    <form id="fLogin" action="" method="post" enctype="text/plain">
+      <fieldset>
+
+        <legend>Editado de IA</legend>
+
+        <label for="inputUsernameID">Nombre de IA</label>
+        <input type="text" name="username" id="inputUsernameID" size="25" minlength="1" maxlength="40" 
+          placeholder="Nuevo nombre de la IA" required />
+        <p></p> <!-- Mensaje de error a manejar con JS -->
+
+        <label for="inputImageID">Imagen de IA</label>
+        <input type="text" name="image" id="inputImageID" size="25" minlength="8"
+          placeholder="Nueva URL de la imagen" required />
+        <p></p> <!-- Mensaje de error a manejar con JS -->
+
+        <label for="inputLinkID">Link de IA</label>
+        <input type="text" name="link" id="inputLinkID" size="25" minlength="4"
+          placeholder="Nuevo link de la pagina" required />
+        <p></p> <!-- Mensaje de error a manejar con JS -->
+
+        <label for="selectFunction">Funciones de IA</label>
+        <select name="function" id="selectFunction" class="selectFunction" required>
+        <option value="" disabled selected>Seleccione la función de la IA</option>
+        <option value="Arte & Creatividad">1-Arte & Creatividad</option>
+        <option value="Conversasionales">2-Conversasionales</option>
+        <option value="Diseño">3-Diseño</option>
+        <option value="Educación">4-Educación</option>
+        <option value="Programación">5-Programación</option>
+        <option value="Automatización">6-Automatización</option>
+        <option value="Texto y Traducción">7-Texto y Traducción</option>
+        </select>
+        <p></p> <!-- Mensaje de error a manejar con JS -->
+
+      </fieldset>
+
+      <button id="btnLogin" name="btnLogin" type="submit">Editar IA</button>
+    </form>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+      document.getElementById('fLogin').addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        var nombreIA = document.getElementById('inputUsernameID').value;
+        var imagenIA = document.getElementById('inputImageID').value;
+        var linkIA = document.getElementById('inputLinkID').value;
+        var funcionIA = document.getElementById('selectFunction').value;
+
+        fetch('../assets/JSON/ias.json')
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+            return response.json();
+          })
+          .then(data => {
+            var nuevaIA = {
+              "id": data.length + 1,
+              "nombre": nombreIA,
+              "link": linkIA,
+              "image": imagenIA,
+              "iasTypeID": [1]
+            };
+
+            data.push(nuevaIA);
+            alert("Se guardo la nueva IA");
+            window.location.href = "https://msustersic.github.io/TP1/index.html";
+          })
+          .catch(error => {
+            console.error('Error during fetch:', error);
+          });
+      });
+    });
+    </script>
+    
+  </main>
+
+  <footer>
+    <section>
+      <p>CaC FS PYTHON 2023</p>
+      <p><strong>Comisión 23507</strong></p>
+      <p><i>Grupo 19</i></p>
+    </section>
+
+    <section>
+      <article>
+        <span>Matías Andrés Sustersic</span>
+        <a class="bi bi-envelope" href="mailto:msuster93@gmail.com?$subject=Contacto%20desde%20IAs list"
+          title="Email de Matías Andrés Sustersic"></a>
+        <a class="bi bi-whatsapp" href="https://api.whatsapp.com/send?phone=5491123917168" target="_blank"
+          title="Whatsapp de Matías Andrés Sustersic"></a>
+        <a class="bi bi-github iconRed iconRedG icon tresSeg" href="https://github.com/Msustersic" target="_blank"
+          title="GitHub"></a>
+      </article>
+      <article>
+        <span>Mario Rubén Lerman</span>
+        <a class="bi bi-envelope" href="mailto:mariolerman@gmail.com?$subject=Contacto%20desde%20IAs list"
+          title="Email de Mario Rubén Lerman"></a>
+        <a class="bi bi-whatsapp"
+          href="https://api.whatsapp.com/send?phone=5491145777353&text=Contacto%20desde%20IAs list" target="_blank"
+          title="Whatsapp de Mario Lerman"></a>
+        <a class="bi bi-github iconRed iconRedG icon tresSeg" href="https://github.com/Marior70" target="_blank"
+          title="GitHub"></a>
+      </article>      
+      <article>
+        <span>Alejo Podbielski</span>
+        <a class="bi bi-envelope" href="mailto:valentinpodbielski71@gmail.com?$subject=Contacto%20desde%20IAs list"
+          title="Email de Alejo Podbielski"></a>
+        <a class="bi bi-whatsapp" href="https://api.whatsapp.com/send?phone=5491162037019" target="_blank"
+          title="Whatsapp de Alejo Podbielski"></a>
+        <a class="bi bi-github iconRed iconRedG icon tresSeg" href="https://github.com/Valentinpodbielski" target="_blank"
+          title="GitHub"></a>
+      </article>
+      <article>
+        <span>Julián Albornoz</span>
+        <a class="bi bi-envelope" href="mailto:julian.alborno05@gmail.com?$subject=Contacto%20desde%20IAs list"
+          title="Email de Julián Albornoz"></a>
+        <a class="bi bi-whatsapp" href="https://api.whatsapp.com/send?phone=5491150051266" target="_blank"
+          title="Whatsapp de Julián Albornoz"></a>
+        <a class="bi bi-github iconRed iconRedG icon tresSeg" href="https://github.com/julianliyo" target="_blank"
+          title="GitHub"></a>
+      </article>
+    </section>
+    <img src="../../assets/media/images/logo_tecno.png" alt="Logo de CSS-3" style="width: 50px;height: 33.5px;">
+  </footer>
+
+  <script src="../../assets/js/index.js"></script>
+</body>
+
+</html>
