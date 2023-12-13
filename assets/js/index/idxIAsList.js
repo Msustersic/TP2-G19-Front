@@ -1,13 +1,6 @@
-import { API_URL } from "../constantes.js";
+import { IAs_URI } from "../constantes.js";
 import { Render } from "../render.js";
 import { obtenerIAsList } from "./getIAs.js";
 
 const ias = new Render("iaList");
-ias.fetchData(`${API_URL}iasList/`,
-obtenerIAsList,
-   {
-      method: 'GET',
-      /* headers: {
-         'Authorization': `Bearer ${TOKEN_API}`
-      } */   
-   });
+ias.fetchData(IAs_URI, obtenerIAsList);
