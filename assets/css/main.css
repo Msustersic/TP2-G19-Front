@@ -12,7 +12,7 @@ body>main {
    flex-direction: row;
    flex-wrap: wrap;
    justify-content: center;
-   gap: 5vw;
+   gap: 10vw;
    overflow: hidden;
 }
 
@@ -25,21 +25,19 @@ body>main {
 }
 
 #iaList>li img:hover {
-   transform: scale(1.05);
+   transform: scale(1.10); 
 }
 
 @media only screen and (min-width: 768px) {
-
    #iaList {
       gap: 2rem;
    }
-
    #iaList img {
       width: 195px;
       height: 150px;
    }
-
+   
    #iaList>li img:hover {
-      transform: scale(1.06);
+      transform: scale(1.10);
    }
 }
